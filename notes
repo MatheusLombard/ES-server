@@ -1,0 +1,86 @@
+// const express = require('express');
+// const cors = require('cors'); // Importe o pacote cors
+(async () => {
+
+
+const database = require('./conexao');
+const Usuarios = require('./models/usuarios');
+const FichaMedica = require('./models/fichaMedica');
+const Doenca = require('./models/doenca');
+
+// const app = express();
+// app.use(cors());
+
+
+
+await database.sync();
+
+// const novaFichaMedica = await FichaMedica.create({
+//     medicamentos: 'Paracetamol, Ibuprofeno',
+//     alergias: 'Pólen, Amendoim',
+//     cancer: 'Nenhum',
+//     comorbidades: 'Diabetes, Hipertensão',
+//     tipoSanguineo: 'O+',
+//     obs: 'Paciente utiliza insulina regularmente',
+    
+    
+// })
+// const novoUsuario = await Usuarios.create({
+//     nome: 'Maria da Silva',
+//     nascimento: '15-05-1990',  // Data no formato YYYY-MM-DD
+//     sexo: 'F',
+//     CPF: '123.456.789-00',
+//     senha: '1234',
+//     telefonePessoal: '(11) 98765-4321',
+//     telefoneEmergencia: '(11) 91234-5678',
+//     CEP: '01010-001',
+//     endereco: 'Rua Exemplo, 123',
+//     bairro: 'Centro',
+//     numero: 123,
+//     cidade: 'São Paulo',
+//     estado: 'SP',
+//     IdFichaMedica: novaFichaMedica.id
+// })
+// app.get('/create/:', (req, res) => {
+
+// })
+
+    
+
+    // const novaDoenca = await Doenca.create({
+    //     doenca: 'Aids'
+
+// app.get('')  
+const doenca = await Doenca.findByPk(2)
+    const usuarios = await Usuarios.findByPk(1)
+    await usuarios.setDoencas(doenca)
+
+    // const usuarios = await Usuarios.findByPk(1, {
+    //     include: [
+    //         {
+    //             model: FichaMedica,  // Incluindo a Ficha Médica
+    //             attributes: { exclude: [] }  // Incluindo todos os atributos da Ficha Médica
+    //         },
+    //         {
+    //             model: Doenca,
+    //             through: { attributes: [] } // Isso é para não mostrar a tabela intermediária
+    //         }
+    //     ]
+    // });
+
+    // const usuariosJson = await usuarios.toJSON()
+    // const doencas = usuariosJson.Doencas
+    // if (doencas && doencas.length > 0) {
+    //     doencas.forEach(doenca => {
+    //         console.log(`${doenca.doenca}`); // Acessa a propriedade 'doenca' de cada objeto
+    //     });
+    // } else {
+    //     console.log("Nenhuma doença associada ao usuário.");
+    // }
+
+    
+    // const usuarios = await Usuarios.findByPk(1, {include: FichaMedica})
+
+    // console.log(usuarios.FichaMedica.tipoSanguineo)
+
+})();
