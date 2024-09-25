@@ -1,5 +1,5 @@
 const Sequelize  = require("sequelize");
-const database = require('../conexao');
+const database = require('./conexao');
 const FichaMedica = require("./fichaMedica");
 const Doenca = require("./doenca");
 const UsuarioDoenca = require("./usuarioDoenca");
